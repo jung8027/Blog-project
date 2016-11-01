@@ -13,7 +13,9 @@ app.get('/', function (req, res) {
 });
 
 app.get('/posts',(req,res)=>{
-	res.send('hey from the posts page')
+	Post.find({},(err,data)=>{
+	  	res.send(data)
+	  })
 })
 
 db.on('open', () => {
