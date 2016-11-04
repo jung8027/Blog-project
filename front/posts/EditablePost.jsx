@@ -30,19 +30,24 @@ const EditablePost = React.createClass({
       <div>
           <form>
           <label>Title: </label>
+          <br/>
           <textarea onChange={this.handleChange.bind(this, 'title')} type="text" name="title">
             {this.props.post.title}
           </textarea>
           <br/>
-          <label>Pictures: </label>
+          <label>Picture Link: </label>
+          <br/>
           <textarea onChange={this.handleChange.bind(this, 'pics')} type="text" name="pics">
             {this.props.post.pics}
           </textarea>
           <br/>     
-          <label>Body: </label>
+          <label>Text: </label>
+          <br/>
         	<textarea onChange={this.handleChange.bind(this, 'body')}>
            		{this.props.post.text}
          	</textarea>
+          <br/>
+          <Link to="/"><input type="button" value="Cancel"/></Link>
          	 <Link to="/"><input onClick={this.submitUpdate} type="button" value="Submit" /></Link>
          </form>
       </div>

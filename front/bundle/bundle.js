@@ -36673,7 +36673,7 @@
 	
 	
 	// module
-	exports.push([module.id, "img {\n\theight: 33vh;\n}\n\nbody,html {\n\tbackground-color: lavender;\n}", ""]);
+	exports.push([module.id, "img {\n\theight: 40vh;\n}\n\nbody,html {\n\tbackground-color: lavender;\n\ttext-align: center;\n}\n", ""]);
 	
 	// exports
 
@@ -37056,7 +37056,7 @@
 	  render: function render() {
 	    return _react2.default.createElement(
 	      'div',
-	      null,
+	      { style: posts },
 	      _react2.default.createElement(
 	        _reactRouter.Link,
 	        { to: '/post/' + this.props.post._id },
@@ -37079,6 +37079,15 @@
 	    );
 	  }
 	});
+	
+	var posts = {
+	  backgroundColor: 'white',
+	  display: 'inline-flex',
+	  alignItems: 'center',
+	  flexDirection: 'column',
+	  padding: '15px',
+	  border: "1px solid black"
+	};
 	
 	Post.propTypes = {
 	  post: _react2.default.PropTypes.object
@@ -37216,6 +37225,7 @@
 	          null,
 	          'Title: '
 	        ),
+	        _react2.default.createElement('br', null),
 	        _react2.default.createElement(
 	          'textarea',
 	          { onChange: this.handleChange.bind(this, 'title'), type: 'text', name: 'title' },
@@ -37225,8 +37235,9 @@
 	        _react2.default.createElement(
 	          'label',
 	          null,
-	          'Pictures: '
+	          'Picture Link: '
 	        ),
+	        _react2.default.createElement('br', null),
 	        _react2.default.createElement(
 	          'textarea',
 	          { onChange: this.handleChange.bind(this, 'pics'), type: 'text', name: 'pics' },
@@ -37236,12 +37247,19 @@
 	        _react2.default.createElement(
 	          'label',
 	          null,
-	          'Body: '
+	          'Text: '
 	        ),
+	        _react2.default.createElement('br', null),
 	        _react2.default.createElement(
 	          'textarea',
 	          { onChange: this.handleChange.bind(this, 'body') },
 	          this.props.post.text
+	        ),
+	        _react2.default.createElement('br', null),
+	        _react2.default.createElement(
+	          _reactRouter.Link,
+	          { to: '/' },
+	          _react2.default.createElement('input', { type: 'button', value: 'Cancel' })
 	        ),
 	        _react2.default.createElement(
 	          _reactRouter.Link,
@@ -37327,22 +37345,25 @@
 	        null,
 	        'Title: '
 	      ),
+	      _react2.default.createElement('br', null),
 	      _react2.default.createElement('input', { onChange: this.handleChange.bind(this, 'title'), type: 'text', name: 'title' }),
 	      _react2.default.createElement('br', null),
 	      _react2.default.createElement('br', null),
 	      _react2.default.createElement(
 	        'label',
 	        null,
-	        'Pictures: '
+	        'Picture Link: '
 	      ),
+	      _react2.default.createElement('br', null),
 	      _react2.default.createElement('input', { onChange: this.handleChange.bind(this, 'pics'), type: 'text', name: 'pics' }),
 	      _react2.default.createElement('br', null),
 	      _react2.default.createElement('br', null),
 	      _react2.default.createElement(
 	        'label',
 	        null,
-	        'Body: '
+	        'Text: '
 	      ),
+	      _react2.default.createElement('br', null),
 	      _react2.default.createElement('input', { onChange: this.handleChange.bind(this, 'body'), type: 'body', name: 'body' }),
 	      _react2.default.createElement('br', null),
 	      _react2.default.createElement('br', null),
@@ -37429,7 +37450,7 @@
 	      _react2.default.createElement(
 	        'h1',
 	        null,
-	        '\'404\''
+	        '\'404\' ARE YOU LOST?'
 	      )
 	    );
 	  }

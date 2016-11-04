@@ -1,7 +1,8 @@
 img {
-	height: 33vh;
+	height: 40vh;
 }
 
 body,html {
 	background-color: lavender;
+	text-align: center;
 }

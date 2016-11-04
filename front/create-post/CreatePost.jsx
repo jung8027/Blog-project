@@ -35,14 +35,17 @@ const CreatePost = React.createClass({
       <form>
         <h1>Submit a post:</h1>
         <label>Title: </label>
+        <br/>
         <input onChange={this.handleChange.bind(this, 'title')} type="text" name="title" />
         <br/>
         <br/>
-        <label>Pictures: </label>
+        <label>Picture Link: </label>
+        <br/>
         <input onChange={this.handleChange.bind(this, 'pics')} type="text" name="pics" />
         <br/>
         <br/>        
-        <label>Body: </label>
+        <label>Text: </label>
+        <br/>
         <input onChange={this.handleChange.bind(this, 'body')} type="body" name="body" />
         <br/>
         <br/>
