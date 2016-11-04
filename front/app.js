@@ -37,10 +37,6 @@ const App = React.createClass({
 
 });
 
-// const appStyles = {
-//   backgroundColor: 'lavender'
-// }
-
 ReactDOM.render(
   <Router history={browserHistory}>
     <Route path="/" component={App} />

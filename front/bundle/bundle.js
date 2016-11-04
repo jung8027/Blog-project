@@ -124,11 +124,9 @@
 	
 	});
 	
-	// const appStyles = {
-	//   backgroundColor: 'lavender'
-	// }
-	
 	//Components
+	
+	
 	_reactDom2.default.render(_react2.default.createElement(
 	  _reactRouter.Router,
 	  { history: _reactRouter.browserHistory },
@@ -37219,6 +37217,16 @@
 	      }
 	    });
 	  },
+	  deletePost: function deletePost() {
+	    _jquery2.default.ajax({
+	      url: '/edit-post',
+	      type: 'DELETE',
+	      data: {
+	        id: this.props.post._id
+	      }
+	    });
+	    console.log('trying to delete post ', this.props.post._id);
+	  },
 	  handleChange: function handleChange(inputField, e) {
 	    this.setState(_defineProperty({}, inputField, e.target.value));
 	  },
@@ -37275,6 +37283,11 @@
 	          _reactRouter.Link,
 	          { to: '/' },
 	          _react2.default.createElement('input', { onClick: this.submitUpdate, type: 'button', value: 'Submit' })
+	        ),
+	        _react2.default.createElement(
+	          _reactRouter.Link,
+	          { to: '/' },
+	          _react2.default.createElement('input', { onClick: this.deletePost, type: 'button', value: 'DELETE' })
 	        )
 	      )
 	    );

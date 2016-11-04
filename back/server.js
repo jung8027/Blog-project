@@ -31,11 +31,9 @@ app.get('/posts', (req, res) => {
 
 //Edit existing post
 app.post('/edit-post', (req, res) => {
- console.log('DATA FROM AJAX:', req.body);
- console.log('POST req: ready to update post');
-
+// console.log('DATA FROM AJAX:', req.body);
+// console.log('POST req: ready to update post');
  var obj_id = new ObjectId(req.body.id);
-
  Post.update( {_id: obj_id }, {title: req.body.title, pics: req.body.pics, text: req.body.text},
    (err) => {
      if (err){ 
@@ -43,6 +41,19 @@ app.post('/edit-post', (req, res) => {
      return;
    }
    console.log('Edited post!')
+ });
+});
+
+//Delete an existing post
+app.delete('/edit-post', (req, res) => {
+ var obj_id = new ObjectId(req.body.id);
+ Post.remove( {_id: obj_id },
+   (err) => {
+     if (err){ 
+     console.log('Error');
+     return;
+   }
+   console.log('Deleted post!')
  });
 });
 
