@@ -1,4 +1,0 @@
--Creating different schemas - how many do we need? Do we only need one, 
--Finding our data - what id we want a route that shows certain posts but
--how should we set up collaboration for our project? how should we set up
--what will our final project look like? what will wireframes.mockups look like?
