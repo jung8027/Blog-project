@@ -36673,7 +36673,7 @@
 	
 	
 	// module
-	exports.push([module.id, "img {\n\theight: 40vh;\n}\n\nbody,html {\n\tbackground-color: lavender;\n\ttext-align: center;\n}\n", ""]);
+	exports.push([module.id, "img {\n\theight: 300px;\n\twidth: 500px;\n}\n\nbody,html {\n\tbackground-color: lavender;\n\ttext-align: center;\n\tfont-family: 'Raleway', sans-serif;\n}\n\n/*.inpox {\n\twidth: 400px;\n\theight: 35px;\n\tborder: 1px solid black;\n\tborder-radius: 20px;\n\tbackground-color: white;\n}*/", ""]);
 	
 	// exports
 
@@ -37048,6 +37048,8 @@
 	
 	var _reactRouter = __webpack_require__(173);
 	
+	__webpack_require__(229);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var Post = _react2.default.createClass({
@@ -37086,7 +37088,8 @@
 	  alignItems: 'center',
 	  flexDirection: 'column',
 	  padding: '15px',
-	  border: "1px solid black"
+	  margin: "10px",
+	  textalign: "right"
 	};
 	
 	Post.propTypes = {
@@ -37304,6 +37307,8 @@
 	
 	var _reactRouter = __webpack_require__(173);
 	
+	__webpack_require__(229);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -37353,7 +37358,7 @@
 	        'Title: '
 	      ),
 	      _react2.default.createElement('br', null),
-	      _react2.default.createElement('input', { onChange: this.handleChange.bind(this, 'title'), type: 'text', name: 'title' }),
+	      _react2.default.createElement('input', { onChange: this.handleChange.bind(this, 'title'), type: 'text', name: 'title', className: 'inpox' }),
 	      _react2.default.createElement('br', null),
 	      _react2.default.createElement('br', null),
 	      _react2.default.createElement(
@@ -37362,7 +37367,7 @@
 	        'Picture Link: '
 	      ),
 	      _react2.default.createElement('br', null),
-	      _react2.default.createElement('input', { onChange: this.handleChange.bind(this, 'pics'), type: 'text', name: 'pics' }),
+	      _react2.default.createElement('input', { onChange: this.handleChange.bind(this, 'pics'), type: 'text', name: 'pics', className: 'inpox' }),
 	      _react2.default.createElement('br', null),
 	      _react2.default.createElement('br', null),
 	      _react2.default.createElement(
@@ -37371,7 +37376,7 @@
 	        'Text: '
 	      ),
 	      _react2.default.createElement('br', null),
-	      _react2.default.createElement('input', { onChange: this.handleChange.bind(this, 'body'), type: 'body', name: 'body' }),
+	      _react2.default.createElement('input', { onChange: this.handleChange.bind(this, 'body'), type: 'body', name: 'body', className: 'inpox' }),
 	      _react2.default.createElement('br', null),
 	      _react2.default.createElement('br', null),
 	      _react2.default.createElement(
