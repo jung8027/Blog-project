@@ -7,8 +7,15 @@ const EditablePost = React.createClass({
     return {
       title: '',
       pics: '',
-      body: ''
+      text: ''
     }
+  },
+  componentWillMount(){
+    this.setState({
+      title: this.props.post.title,
+      pics: this.props.post.pics,
+      text: this.props.post.text
+    })
   },
   submitUpdate() {
     $.ajax({
@@ -17,7 +24,7 @@ const EditablePost = React.createClass({
       data: {
         title: this.state.title,
         pics: this.state.pics,
-        text: this.state.body,
+        text: this.state.text,
         id: this.props.post._id
       }
     })
@@ -43,7 +50,7 @@ const EditablePost = React.createClass({
           <br/>     
           <label>Text: </label>
           <br/>
-        	<textarea onChange={this.handleChange.bind(this, 'body')}>
+        	<textarea onChange={this.handleChange.bind(this, 'text')}>
            		{this.props.post.text}
          	</textarea>
           <br/>

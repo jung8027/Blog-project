@@ -37194,8 +37194,15 @@
 	    return {
 	      title: '',
 	      pics: '',
-	      body: ''
+	      text: ''
 	    };
+	  },
+	  componentWillMount: function componentWillMount() {
+	    this.setState({
+	      title: this.props.post.title,
+	      pics: this.props.post.pics,
+	      text: this.props.post.text
+	    });
 	  },
 	  submitUpdate: function submitUpdate() {
 	    _jquery2.default.ajax({
@@ -37204,7 +37211,7 @@
 	      data: {
 	        title: this.state.title,
 	        pics: this.state.pics,
-	        text: this.state.body,
+	        text: this.state.text,
 	        id: this.props.post._id
 	      }
 	    });
@@ -37252,7 +37259,7 @@
 	        _react2.default.createElement('br', null),
 	        _react2.default.createElement(
 	          'textarea',
-	          { onChange: this.handleChange.bind(this, 'body') },
+	          { onChange: this.handleChange.bind(this, 'text') },
 	          this.props.post.text
 	        ),
 	        _react2.default.createElement('br', null),
