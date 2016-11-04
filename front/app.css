@@ -1,8 +1,18 @@
 img {
-	height: 40vh;
+	height: 300px;
+	width: 500px;
 }
 
 body,html {
 	background-color: lavender;
 	text-align: center;
+	font-family: 'Raleway', sans-serif;
 }
+
+/*.inpox {
+	width: 400px;
+	height: 35px;
+	border: 1px solid black;
+	border-radius: 20px;
+	background-color: white;
+}*/

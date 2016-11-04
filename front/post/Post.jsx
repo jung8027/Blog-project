@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router';
+import '../app.css'
 
 const Post = React.createClass({
   render: function() {
@@ -19,7 +20,8 @@ const posts = {
     alignItems: 'center',
     flexDirection: 'column',
     padding: '15px',
-    border: "1px solid black",
+    margin: "10px",
+    textalign: "right",
 }
 
 Post.propTypes = {

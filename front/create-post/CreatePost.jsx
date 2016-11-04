@@ -1,6 +1,7 @@
 import React from 'react';
 import $ from 'jquery';
 import {Link} from 'react-router';
+import '../app.css'
 
 const CreatePost = React.createClass({
   getInitialState() {
@@ -36,17 +37,17 @@ const CreatePost = React.createClass({
         <h1>Submit a post:</h1>
         <label>Title: </label>
         <br/>
-        <input onChange={this.handleChange.bind(this, 'title')} type="text" name="title" />
+        <input onChange={this.handleChange.bind(this, 'title')} type="text" name="title" className="inpox"/>
         <br/>
         <br/>
         <label>Picture Link: </label>
         <br/>
-        <input onChange={this.handleChange.bind(this, 'pics')} type="text" name="pics" />
+        <input onChange={this.handleChange.bind(this, 'pics')} type="text" name="pics" className="inpox"/>
         <br/>
         <br/>        
         <label>Text: </label>
         <br/>
-        <input onChange={this.handleChange.bind(this, 'body')} type="body" name="body" />
+        <input onChange={this.handleChange.bind(this, 'body')} type="body" name="body" className="inpox"/>
         <br/>
         <br/>
         <Link to="/"><input onClick={this.submitNewPost} type="button" value="Submit" /></Link>
