@@ -12,7 +12,6 @@ const CreatePost = React.createClass({
     }
   },
   handleChange(inputField, e) {
-    console.log(e);
     this.setState({[inputField]: e.target.value})
     console.log(this.state);
   },
@@ -26,10 +25,6 @@ const CreatePost = React.createClass({
         text: this.state.body
       }
     })
-    .done((data) => {
-      console.log('AJAX data');
-      console.log('AJAX state', this.state);
-    })
   },
   render(){
     return (
@@ -37,17 +32,17 @@ const CreatePost = React.createClass({
         <h1>Submit a post:</h1>
         <label>Title: </label>
         <br/>
-        <input onChange={this.handleChange.bind(this, 'title')} type="text" name="title" className="inpox"/>
+        <input onChange={this.handleChange.bind(this, 'title')} type="text" name="title"/>
         <br/>
         <br/>
         <label>Picture Link: </label>
         <br/>
-        <input onChange={this.handleChange.bind(this, 'pics')} type="text" name="pics" className="inpox"/>
+        <input onChange={this.handleChange.bind(this, 'pics')} type="text" name="pics"/>
         <br/>
         <br/>        
         <label>Text: </label>
         <br/>
-        <input onChange={this.handleChange.bind(this, 'body')} type="body" name="body" className="inpox"/>
+        <input onChange={this.handleChange.bind(this, 'body')} type="body" name="body"/>
         <br/>
         <br/>
         <Link to="/"><input onClick={this.submitNewPost} type="button" value="Submit" /></Link>

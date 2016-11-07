@@ -93,9 +93,13 @@
 	
 	var _NoRoute2 = _interopRequireDefault(_NoRoute);
 	
+	var _EditablePost = __webpack_require__(236);
+	
+	var _EditablePost2 = _interopRequireDefault(_EditablePost);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	//npm modules
+	//Components
 	var App = _react2.default.createClass({
 	  displayName: 'App',
 	  getInitialState: function getInitialState() {
@@ -121,19 +125,17 @@
 	      this.props.children
 	    );
 	  }
-	
 	});
 	
-	// const appStyles = {
-	//   backgroundColor: 'lavender'
-	// }
+	//be sure to replace CreatePost component in line 31 with a header/navbar
+	//can access CreatePost through /create-post but normal users should not be able to post.
 	
-	//Components
+	//npm modules
 	_reactDom2.default.render(_react2.default.createElement(
 	  _reactRouter.Router,
 	  { history: _reactRouter.browserHistory },
 	  _react2.default.createElement(_reactRouter.Route, { path: '/', component: App }),
-	  _react2.default.createElement(_reactRouter.Route, { path: 'create-post', component: _CreatePost2.default }),
+	  _react2.default.createElement(_reactRouter.Route, { path: '/create-post', component: _CreatePost2.default }),
 	  _react2.default.createElement(_reactRouter.Route, { path: '/post/:id', component: _PostPage2.default }),
 	  _react2.default.createElement(_reactRouter.Route, { path: '*', component: _NoRoute2.default })
 	), document.getElementById('root'));
@@ -37071,7 +37073,7 @@
 	      _react2.default.createElement(
 	        _reactRouter.Link,
 	        { to: '/post/' + this.props.post._id },
-	        _react2.default.createElement('img', { src: this.props.post.pics, className: 'postimgs' })
+	        _react2.default.createElement('img', { src: this.props.post.pics })
 	      ),
 	      _react2.default.createElement(
 	        'p',
@@ -37131,6 +37133,10 @@
 	  getInitialState: function getInitialState() {
 	    return { post: null };
 	  },
+	
+	  // componentWillMount(){
+	  //   console.log('postpage info')
+	  // },
 	  componentDidMount: function componentDidMount() {
 	    var _this = this;
 	
@@ -37219,6 +37225,16 @@
 	      }
 	    });
 	  },
+	  deletePost: function deletePost() {
+	    _jquery2.default.ajax({
+	      url: '/edit-post',
+	      type: 'DELETE',
+	      data: {
+	        id: this.props.post._id
+	      }
+	    });
+	    console.log('trying to delete post ', this.props.post._id);
+	  },
 	  handleChange: function handleChange(inputField, e) {
 	    this.setState(_defineProperty({}, inputField, e.target.value));
 	  },
@@ -37275,6 +37291,11 @@
 	          _reactRouter.Link,
 	          { to: '/' },
 	          _react2.default.createElement('input', { onClick: this.submitUpdate, type: 'button', value: 'Submit' })
+	        ),
+	        _react2.default.createElement(
+	          _reactRouter.Link,
+	          { to: '/' },
+	          _react2.default.createElement('input', { onClick: this.deletePost, type: 'button', value: 'DELETE' })
 	        )
 	      )
 	    );
@@ -37323,13 +37344,11 @@
 	    };
 	  },
 	  handleChange: function handleChange(inputField, e) {
-	    console.log(e);
+	    //    console.log(e);
 	    this.setState(_defineProperty({}, inputField, e.target.value));
 	    console.log(this.state);
 	  },
 	  submitNewPost: function submitNewPost() {
-	    var _this = this;
-	
 	    _jquery2.default.ajax({
 	      url: '/posts',
 	      type: 'POST',
@@ -37338,10 +37357,11 @@
 	        pics: this.state.pics,
 	        text: this.state.body
 	      }
-	    }).done(function (data) {
-	      console.log('AJAX data');
-	      console.log('AJAX state', _this.state);
 	    });
+	    //    .done((data) => {
+	    //      console.log('AJAX data');
+	    //      console.log('AJAX state', this.state);
+	    //    })
 	  },
 	  render: function render() {
 	    return _react2.default.createElement(
@@ -37358,7 +37378,7 @@
 	        'Title: '
 	      ),
 	      _react2.default.createElement('br', null),
-	      _react2.default.createElement('input', { onChange: this.handleChange.bind(this, 'title'), type: 'text', name: 'title', className: 'inpox' }),
+	      _react2.default.createElement('input', { onChange: this.handleChange.bind(this, 'title'), type: 'text', name: 'title' }),
 	      _react2.default.createElement('br', null),
 	      _react2.default.createElement('br', null),
 	      _react2.default.createElement(
@@ -37367,7 +37387,7 @@
 	        'Picture Link: '
 	      ),
 	      _react2.default.createElement('br', null),
-	      _react2.default.createElement('input', { onChange: this.handleChange.bind(this, 'pics'), type: 'text', name: 'pics', className: 'inpox' }),
+	      _react2.default.createElement('input', { onChange: this.handleChange.bind(this, 'pics'), type: 'text', name: 'pics' }),
 	      _react2.default.createElement('br', null),
 	      _react2.default.createElement('br', null),
 	      _react2.default.createElement(
@@ -37376,7 +37396,7 @@
 	        'Text: '
 	      ),
 	      _react2.default.createElement('br', null),
-	      _react2.default.createElement('input', { onChange: this.handleChange.bind(this, 'body'), type: 'body', name: 'body', className: 'inpox' }),
+	      _react2.default.createElement('input', { onChange: this.handleChange.bind(this, 'body'), type: 'body', name: 'body' }),
 	      _react2.default.createElement('br', null),
 	      _react2.default.createElement('br', null),
 	      _react2.default.createElement(

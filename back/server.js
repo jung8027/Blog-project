@@ -22,6 +22,14 @@ app.use(express.static(`${rootPath}/front/bundle`));
 
 
 //API
+
+//Get an individual post
+app.get('/posts/:id', (req, res) => {
+  Post.findById(req.params.id, (err, data) => {
+    res.send(data);
+  })
+});
+
 //Get all blog posts
 app.get('/posts', (req, res) => {
   Post.find({}, (err, data) => {
@@ -31,11 +39,7 @@ app.get('/posts', (req, res) => {
 
 //Edit existing post
 app.post('/edit-post', (req, res) => {
- console.log('DATA FROM AJAX:', req.body);
- console.log('POST req: ready to update post');
-
  var obj_id = new ObjectId(req.body.id);
-
  Post.update( {_id: obj_id }, {title: req.body.title, pics: req.body.pics, text: req.body.text},
    (err) => {
      if (err){ 
@@ -43,6 +47,19 @@ app.post('/edit-post', (req, res) => {
      return;
    }
    console.log('Edited post!')
+ });
+});
+
+//Delete an existing post
+app.delete('/edit-post', (req, res) => {
+ var obj_id = new ObjectId(req.body.id);
+ Post.remove( {_id: obj_id },
+   (err) => {
+     if (err){ 
+     console.log('Error');
+     return;
+   }
+   console.log('Deleted post!')
  });
 });
 
@@ -55,6 +72,8 @@ app.post('/posts', (req, res) => {
    })
 });
 
+
+//Comments are currently inactive
 app.get('/comments', (req, res) => {
   console.log('Getting comments!');
   Comment.find({}, (err, data) => {
@@ -68,14 +87,6 @@ app.post('/comments', (req, res) => {
   Comment.create(newComment);
 
 });
-
-//Get an individual post
-app.get('/posts/:id', (req, res) => {
-  Post.findById(req.params.id, (err, data) => {
-    res.send(data);
-  })
-});
-
 
 //Server call
 app.get('/*', (req, res) => {

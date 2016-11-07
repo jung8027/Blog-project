@@ -7,7 +7,7 @@ const Post = React.createClass({
     return (
       <div style={posts}>
         <Link to={`/post/${this.props.post._id}`}><h2>{this.props.post.title}</h2></Link>
-        <Link to={`/post/${this.props.post._id}`}><img src={this.props.post.pics} className="postimgs"/></Link>
+        <Link to={`/post/${this.props.post._id}`}><img src={this.props.post.pics}/></Link>
         <p>{this.props.post.text}</p>
       </div>
     );

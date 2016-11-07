@@ -11,6 +11,7 @@ import PostPage from './post-page/PostPage.jsx';
 import CreatePost from './create-post/CreatePost.jsx';
 import Comment from './comments/Comment.jsx';
 import NoRoute from './NoRoute';
+import EditablePost from './posts/EditablePost.jsx';
 
 const App = React.createClass({
   getInitialState() {
@@ -34,17 +35,15 @@ const App = React.createClass({
       </div>
     );
   }
-
 });
 
-// const appStyles = {
-//   backgroundColor: 'lavender'
-// }
+//be sure to replace CreatePost component in line 32 with a header/navbar
+//can access CreatePost through /create-post but normal users should not be able to post.
 
 ReactDOM.render(
   <Router history={browserHistory}>
     <Route path="/" component={App} />
-    <Route path="create-post" component={CreatePost} />
+    <Route path="/create-post" component={CreatePost} />
     <Route path="/post/:id" component={PostPage} />
     <Route path="*" component={NoRoute} />
   </Router>,
