@@ -27,6 +27,7 @@ app.use(express.static(`${rootPath}/front/bundle`));
 app.get('/posts/:id', (req, res) => {
   Post.findById(req.params.id, (err, data) => {
     res.send(data);
+    console.log('getting from '+req.params.id)
   })
 });
 
