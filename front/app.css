@@ -8,3 +8,13 @@ body,html {
 	text-align: center;
 	font-family: 'Raleway', sans-serif;
 }
+
+/*.postTiles {
+	background-color: white;
+    display: inline-flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 15px;
+    margin: 10px;
+    text-align: right;
+}*/
