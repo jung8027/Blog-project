@@ -131,6 +131,9 @@
 	//can access CreatePost through /create-post but normal users should not be able to post.
 	
 	//npm modules
+	//Components
+	
+	
 	_reactDom2.default.render(_react2.default.createElement(
 	  _reactRouter.Router,
 	  { history: _reactRouter.browserHistory },

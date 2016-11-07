@@ -39,6 +39,10 @@ app.get('/posts', (req, res) => {
 
 //Edit existing post
 app.post('/edit-post', (req, res) => {
+
+// console.log('DATA FROM AJAX:', req.body);
+// console.log('POST req: ready to update post');
+
  var obj_id = new ObjectId(req.body.id);
  Post.update( {_id: obj_id }, {title: req.body.title, pics: req.body.pics, text: req.body.text},
    (err) => {
