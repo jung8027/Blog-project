@@ -3,13 +3,10 @@ import $ from 'jquery';
 import Post from '../post/Post.jsx'
 import EditablePost from '../posts/EditablePost.jsx'
 
-const PostPage = React.createClass({
+const EditPage = React.createClass({
   getInitialState() {
     return {post: null}
   },
-  // componentWillMount(){
-  //   console.log('postpage info')
-  // },
   componentDidMount() {
     $.ajax({
       url: `/posts/${this.props.params.id}`,
@@ -24,7 +21,7 @@ const PostPage = React.createClass({
     return this.state.post ? (
       <div style={postsStyle}>
         <h1>Post:</h1>
-        <Post post={this.state.post} />
+        <EditablePost post={this.state.post} />
       </div>
     ) : null;
   }
@@ -40,4 +37,4 @@ const postsStyle = {
     height: '100%'
 }
 
-export default PostPage;
+export default EditPage;
