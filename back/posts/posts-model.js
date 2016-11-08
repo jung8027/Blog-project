@@ -12,7 +12,8 @@ const blogSchema = mongoose.Schema({
   title: {type: String, required: true},
   pics: {type: String},
   text: {type: String, required: true},
-  author: String
+  author: String,
+  comments: []
 });
 
 //First argument is name of model, second argument is schema

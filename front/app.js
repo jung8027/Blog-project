@@ -11,7 +11,7 @@ import PostPage from './post-page/PostPage.jsx';
 import CreatePost from './create-post/CreatePost.jsx';
 import Comment from './comments/Comment.jsx';
 import NoRoute from './NoRoute';
-import EditablePost from './posts/EditablePost.jsx';
+import EditPage from './post-page/EditPage.jsx';
 
 const App = React.createClass({
   getInitialState() {
@@ -45,6 +45,7 @@ ReactDOM.render(
     <Route path="/" component={App} />
     <Route path="/create-post" component={CreatePost} />
     <Route path="/post/:id" component={PostPage} />
+    <Route path="/post/:id/edit-post" component={EditPage} />    
     <Route path="*" component={NoRoute} />
   </Router>,
   document.getElementById('root')
