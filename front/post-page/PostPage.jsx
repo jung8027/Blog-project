@@ -2,6 +2,7 @@ import React from 'react';
 import $ from 'jquery';
 import Post from '../post/Post.jsx'
 import EditablePost from '../posts/EditablePost.jsx'
+import Comment from '../comments/Comment.jsx'
 
 const PostPage = React.createClass({
   getInitialState() {
@@ -25,11 +26,12 @@ const PostPage = React.createClass({
       <div style={postsStyle}>
         <h1>Post:</h1>
         <Post post={this.state.post} />
+        <Comment post={this.state.post} />
       </div>
     ) : null;
   }
 });
-
+//need to add component between line 28 and 29 to display comments
 
 
 const postsStyle = {

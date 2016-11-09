@@ -2,13 +2,26 @@ import React from 'react';
 import $ from 'jquery';
 
 const Comment = React.createClass({
-  sendPostRequest() {
+  getInitialState(){
+    return{
+      username: '',
+      text: '',
+    }
+  },
+  handleChange(inputField, e) {
+    this.setState({[inputField]: e.target.value})
+    console.log(this.state);
+  },
+  sendCommentRequest() {
+    const date = Date.call();
     $.ajax({
       url: '/comments',
       type: 'POST',
       data: {
-        username: 'Test username',
-        text: 'Test comment test'
+        username: this.state.username,
+        text: this.state.text,
+        date: date,
+        id: this.props.post._id
       }
     })
     .done((data) => {
@@ -17,7 +30,13 @@ const Comment = React.createClass({
   },
   render: function() {
     return (
-      <button onClick={this.sendPostRequest}>Send a comment</button>
+      <div>
+        <input onChange={this.handleChange.bind(this, 'username')} type="text" placeholder="username"/>
+        <br/>
+        <textarea rows="5" cols="50" onChange={this.handleChange.bind(this, 'text')} type="text" placeholder="text"/>
+        <br/>
+        <button onClick={this.sendCommentRequest}> Send a comment </button>
+      </div>
     )
   }
 })

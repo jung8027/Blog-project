@@ -33,9 +33,7 @@ const EditablePost = React.createClass({
     $.ajax({
       url: '/edit-post',
       type: 'DELETE',
-      data: {
-        id: this.props.post._id
-      }
+      data: {id: this.props.post._id}
     });
     console.log('trying to delete post ',this.props.post._id)
   },
@@ -48,19 +46,19 @@ const EditablePost = React.createClass({
           <form>
           <label>Title: </label>
           <br/>
-          <textarea onChange={this.handleChange.bind(this, 'title')} type="text" name="title">
+          <textarea rows="5" cols="50" onChange={this.handleChange.bind(this, 'title')} type="text" name="title">
             {this.props.post.title}
           </textarea>
           <br/>
           <label>Picture Link: </label>
           <br/>
-          <textarea onChange={this.handleChange.bind(this, 'pics')} type="text" name="pics">
+          <textarea rows="5" cols="50" onChange={this.handleChange.bind(this, 'pics')} type="text" name="pics">
             {this.props.post.pics}
           </textarea>
           <br/>     
           <label>Text: </label>
           <br/>
-        	<textarea onChange={this.handleChange.bind(this, 'text')}>
+        	<textarea rows="5" cols="50" onChange={this.handleChange.bind(this, 'text')}>
            		{this.props.post.text}
          	</textarea>
           <br/>
