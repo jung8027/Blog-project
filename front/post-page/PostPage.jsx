@@ -3,14 +3,12 @@ import $ from 'jquery';
 import Post from '../post/Post.jsx'
 import EditablePost from '../posts/EditablePost.jsx'
 import CreateComment from '../comments/CreateComment.jsx'
+import Comments from '../comments/Comments.jsx'
 
 const PostPage = React.createClass({
   getInitialState() {
     return {post: null}
   },
-  // componentWillMount(){
-  //   console.log('postpage info')
-  // },
   componentDidMount() {
     $.ajax({
       url: `/posts/${this.props.params.id}`,
@@ -32,7 +30,11 @@ const PostPage = React.createClass({
         ) : null}
         {this.state.post ? (
           <div style={postsStyle}>
-            <h1>Comments:</h1>
+            <Comments post={this.state.post} />
+          </div>
+        ) : null}        
+        {this.state.post ? (
+          <div style={postsStyle}>
             <CreateComment post={this.state.post} />
           </div>
         ) : null}
@@ -40,8 +42,6 @@ const PostPage = React.createClass({
       )
   }
 });
-//need to add component between line 28 and 29 to display comments
-
 
 const postsStyle = {
     backgroundColor: 'pink',
