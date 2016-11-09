@@ -3,9 +3,7 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const postModel = require('./posts/posts-model');
-//const commentModel = require('./comments/comments-model');
 const Post = mongoose.model('Post');
-//const Comment = mongoose.model('Comment');
 const path = require('path');
 const rootPath = path.join(__dirname, '..');
 const bodyParser = require('body-parser');
@@ -40,20 +38,17 @@ app.get('/posts', (req, res) => {
 
 //Edit existing post
 app.post('/edit-post', (req, res) => {
-
-// console.log('DATA FROM AJAX:', req.body);
-// console.log('POST req: ready to update post');
-
- var obj_id = new ObjectId(req.body.id);
- Post.update( {_id: obj_id }, 
+  var obj_id = new ObjectId(req.body.id);
+  Post.update( {_id: obj_id }, 
     {title: req.body.title, pics: req.body.pics, text: req.body.text},
-   (err) => {
-     if (err){ 
-     console.log('Error');
-     return;
-   }
-   console.log('Edited post!')
- });
+      (err) => {
+        if (err){ 
+         console.log('Error');
+         return;
+        }
+        console.log('Edited post!')
+      }
+  );
 });
 
 //Delete an existing post
@@ -78,15 +73,6 @@ app.post('/posts', (req, res) => {
    })
 });
 
-
-//Comments get are currently inactive
-// app.get('/comments', (req, res) => {
-//   console.log('Getting comments!');
-//   Comment.find({}, (err, data) => {
-//     res.send(data)
-//   });
-// });
-
 //Comment posts
 app.post('/comments', (req, res) => {
   var obj_id = new ObjectId(req.body.id);
@@ -95,14 +81,14 @@ app.post('/comments', (req, res) => {
   Post.findByIdAndUpdate(
     {_id: obj_id },
     {$push: {"comments": {username: req.body.username, text: req.body.text, date: req.body.date}}},
-   (err) => {
-     if (err){ 
-     console.log('Error');
-     return;
-     }
-     console.log('Commented post!')
-   }
-   ) 
+    (err) => {
+      if (err){ 
+        console.log('Error');
+        return;
+      }
+      console.log('Commented post!')
+    }
+  ) 
 });
 
 //Server call
