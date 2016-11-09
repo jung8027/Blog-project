@@ -2,7 +2,7 @@ import React from 'react';
 import $ from 'jquery';
 import Post from '../post/Post.jsx'
 import EditablePost from '../posts/EditablePost.jsx'
-import Comment from '../comments/Comment.jsx'
+import CreateComment from '../comments/CreateComment.jsx'
 
 const PostPage = React.createClass({
   getInitialState() {
@@ -33,7 +33,7 @@ const PostPage = React.createClass({
         {this.state.post ? (
           <div style={postsStyle}>
             <h1>Comments:</h1>
-            <Comment post={this.state.post} />
+            <CreateComment post={this.state.post} />
           </div>
         ) : null}
       </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import $ from 'jquery';
 
-const Comment = React.createClass({
+const CreateComment = React.createClass({
   getInitialState(){
     return{
       username: '',
@@ -44,4 +44,4 @@ const Comment = React.createClass({
   }
 })
 
-export default Comment;
+export default CreateComment;
