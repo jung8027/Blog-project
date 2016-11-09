@@ -3,9 +3,9 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const postModel = require('./posts/posts-model');
-const commentModel = require('./comments/comments-model');
+//const commentModel = require('./comments/comments-model');
 const Post = mongoose.model('Post');
-const Comment = mongoose.model('Comment');
+//const Comment = mongoose.model('Comment');
 const path = require('path');
 const rootPath = path.join(__dirname, '..');
 const bodyParser = require('body-parser');
@@ -45,7 +45,8 @@ app.post('/edit-post', (req, res) => {
 // console.log('POST req: ready to update post');
 
  var obj_id = new ObjectId(req.body.id);
- Post.update( {_id: obj_id }, {title: req.body.title, pics: req.body.pics, text: req.body.text},
+ Post.update( {_id: obj_id }, 
+    {title: req.body.title, pics: req.body.pics, text: req.body.text},
    (err) => {
      if (err){ 
      console.log('Error');
@@ -78,19 +79,30 @@ app.post('/posts', (req, res) => {
 });
 
 
-//Comments are currently inactive
-app.get('/comments', (req, res) => {
-  console.log('Getting comments!');
-  Comment.find({}, (err, data) => {
-    res.send(data)
-  });
-});
+//Comments get are currently inactive
+// app.get('/comments', (req, res) => {
+//   console.log('Getting comments!');
+//   Comment.find({}, (err, data) => {
+//     res.send(data)
+//   });
+// });
 
+//Comment posts
 app.post('/comments', (req, res) => {
+  var obj_id = new ObjectId(req.body.id);
   const newComment = req.body;
   console.log('New comment', newComment);
-  Comment.create(newComment);
-
+  Post.findByIdAndUpdate(
+    {_id: obj_id },
+    {$push: {"comments": {username: req.body.username, text: req.body.text, date: req.body.date}}},
+   (err) => {
+     if (err){ 
+     console.log('Error');
+     return;
+     }
+     console.log('Commented post!')
+   }
+   ) 
 });
 
 //Server call

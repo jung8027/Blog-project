@@ -32,17 +32,17 @@ const CreatePost = React.createClass({
         <h1>Submit a post:</h1>
         <label>Title: </label>
         <br/>
-        <input onChange={this.handleChange.bind(this, 'title')} type="text" name="title"/>
+        <textarea rows="5" cols="50" onChange={this.handleChange.bind(this, 'title')} type="text" name="title"/>
         <br/>
         <br/>
         <label>Picture Link: </label>
         <br/>
-        <input onChange={this.handleChange.bind(this, 'pics')} type="text" name="pics"/>
+        <textarea rows="5" cols="50" onChange={this.handleChange.bind(this, 'pics')} type="text" name="pics"/>
         <br/>
         <br/>        
         <label>Text: </label>
         <br/>
-        <input onChange={this.handleChange.bind(this, 'body')} type="body" name="body"/>
+        <textarea rows="5" cols="50" onChange={this.handleChange.bind(this, 'body')} type="text" name="body"/>
         <br/>
         <br/>
         <Link to="/"><input onClick={this.submitNewPost} type="button" value="Submit" /></Link>

@@ -2,14 +2,13 @@ import React from 'react';
 import $ from 'jquery';
 import Post from '../post/Post.jsx'
 import EditablePost from '../posts/EditablePost.jsx'
+import CreateComment from '../comments/CreateComment.jsx'
+import Comments from '../comments/Comments.jsx'
 
 const PostPage = React.createClass({
   getInitialState() {
     return {post: null}
   },
-  // componentWillMount(){
-  //   console.log('postpage info')
-  // },
   componentDidMount() {
     $.ajax({
       url: `/posts/${this.props.params.id}`,
@@ -21,16 +20,28 @@ const PostPage = React.createClass({
     })
   },
   render: function() {
-    return this.state.post ? (
-      <div style={postsStyle}>
-        <h1>Post:</h1>
-        <Post post={this.state.post} />
+    return (
+      <div>
+        {this.state.post ? (
+          <div style={postsStyle}>
+            <h1>Post:</h1>
+            <Post post={this.state.post} />
+          </div>
+        ) : null}
+        {this.state.post ? (
+          <div style={postsStyle}>
+            <Comments post={this.state.post} />
+          </div>
+        ) : null}        
+        {this.state.post ? (
+          <div style={postsStyle}>
+            <CreateComment post={this.state.post} />
+          </div>
+        ) : null}
       </div>
-    ) : null;
+      )
   }
 });
-
-
 
 const postsStyle = {
     backgroundColor: 'pink',
