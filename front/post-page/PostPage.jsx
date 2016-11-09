@@ -22,13 +22,22 @@ const PostPage = React.createClass({
     })
   },
   render: function() {
-    return this.state.post ? (
-      <div style={postsStyle}>
-        <h1>Post:</h1>
-        <Post post={this.state.post} />
-        <Comment post={this.state.post} />
+    return (
+      <div>
+        {this.state.post ? (
+          <div style={postsStyle}>
+            <h1>Post:</h1>
+            <Post post={this.state.post} />
+          </div>
+        ) : null}
+        {this.state.post ? (
+          <div style={postsStyle}>
+            <h1>Comments:</h1>
+            <Comment post={this.state.post} />
+          </div>
+        ) : null}
       </div>
-    ) : null;
+      )
   }
 });
 //need to add component between line 28 and 29 to display comments

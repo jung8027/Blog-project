@@ -31,9 +31,12 @@ const Comment = React.createClass({
   render: function() {
     return (
       <div>
-        <input onChange={this.handleChange.bind(this, 'username')} type="text" placeholder="username"/>
+        <h2><strong>Leave a Reply:</strong></h2>
+        <input size="45" onChange={this.handleChange.bind(this, 'username')} type="text" placeholder="username"/>
         <br/>
-        <textarea rows="5" cols="50" onChange={this.handleChange.bind(this, 'text')} type="text" placeholder="text"/>
+        Text:
+        <br/>
+        <textarea rows="5" cols="43" onChange={this.handleChange.bind(this, 'text')} type="text" placeholder="text"/>
         <br/>
         <button onClick={this.sendCommentRequest}> Send a comment </button>
       </div>
