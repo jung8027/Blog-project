@@ -38,7 +38,7 @@ app.get('/posts', (req, res) => {
 
 //Edit existing post
 app.post('/edit-post', (req, res) => {
-  var obj_id = new ObjectId(req.body.id);
+  var obj_id = ObjectId(req.body.id);
   Post.update( {_id: obj_id }, 
     {title: req.body.title, pics: req.body.pics, text: req.body.text},
       (err) => {
@@ -53,7 +53,7 @@ app.post('/edit-post', (req, res) => {
 
 //Delete an existing post
 app.delete('/edit-post', (req, res) => {
- var obj_id = new ObjectId(req.body.id);
+ var obj_id = ObjectId(req.body.id);
  Post.remove( {_id: obj_id },
    (err) => {
      if (err){ 
@@ -75,18 +75,40 @@ app.post('/posts', (req, res) => {
 
 //Comment posts
 app.post('/comments', (req, res) => {
-  var obj_id = new ObjectId(req.body.id);
+  var obj_id = ObjectId(req.body.id);
   const newComment = req.body;
   console.log('New comment', newComment);
   Post.findByIdAndUpdate(
     {_id: obj_id },
-    {$push: {"comments": {username: req.body.username, text: req.body.text, date: req.body.date}}},
+    {$push: {"comments": {username: newComment.username, text: newComment.text, date: newComment.date}}},
     (err) => {
       if (err){ 
         console.log('Error');
         return;
       }
       console.log('Commented post!')
+      res.send("created")
+    }
+  ) 
+});
+
+//Comment delete
+app.delete('/comments', (req, res) => {
+  console.log("comment delete info", req.body)
+  var PostId = ObjectId(req.body.PostId);
+  var CommentId = ObjectId(req.body.CommentId)
+  const newComment = req.body;
+  console.log('New comment', newComment);
+  Post.findByIdAndUpdate(
+    {_id: PostId },
+    {$pull: {"comments": {_id: CommentId}}},
+    (err) => {
+      if (err){ 
+        console.log('Error');
+        return;
+      }
+      console.log('Deleted comment!')
+      res.send("deleted")
     }
   ) 
 });

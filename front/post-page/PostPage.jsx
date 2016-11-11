@@ -10,6 +10,9 @@ const PostPage = React.createClass({
     return {post: null}
   },
   componentDidMount() {
+    this.fetchPostDetails();
+  },
+  fetchPostDetails: function(){
     $.ajax({
       url: `/posts/${this.props.params.id}`,
       type: 'GET'
@@ -30,12 +33,12 @@ const PostPage = React.createClass({
         ) : null}
         {this.state.post ? (
           <div style={postsStyle}>
-            <Comments post={this.state.post} />
+            <Comments post={this.state.post} refresh={this.fetchPostDetails}/>
           </div>
         ) : null}        
         {this.state.post ? (
           <div style={postsStyle}>
-            <CreateComment post={this.state.post} />
+            <CreateComment post={this.state.post} refresh={this.fetchPostDetails}/>
           </div>
         ) : null}
       </div>
@@ -48,7 +51,8 @@ const postsStyle = {
     display: 'flex',
     alignItems: 'center',
     flexDirection: 'column',
-    height: '100%'
+    height: 'auto',
+    padding: '50px'
 }
 
 export default PostPage;
