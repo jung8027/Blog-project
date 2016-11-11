@@ -25,18 +25,24 @@ const CreateComment = React.createClass({
       }
     })
     .done((data) => {
-      console.log('Comment created!', data);
+      console.log(data);
+       this.setState({
+        username: '',
+        text: '',
+      })
+      this.props.refresh();
+     
     })
   },
   render: function() {
     return (
       <div>
         <h2><strong>Leave a Reply:</strong></h2>
-        <input size="45" onChange={this.handleChange.bind(this, 'username')} type="text" placeholder="username"/>
+        <input size="45" onChange={this.handleChange.bind(this, 'username')} type="text" placeholder="username" value={this.state.username}/>
         <br/>
         Text:
         <br/>
-        <textarea rows="5" cols="43" onChange={this.handleChange.bind(this, 'text')} type="text" placeholder="text"/>
+        <textarea rows="5" cols="43" onChange={this.handleChange.bind(this, 'text')} type="text" placeholder="text" value={this.state.text}/>
         <br/>
         <button onClick={this.sendCommentRequest}> Send a comment </button>
       </div>
